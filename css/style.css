@@ -1,0 +1,46 @@
+@import url(../css/index.css);
+
+
+body {
+  font: 1em;
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  height: 300vh;
+  box-sizing: border-box;
+  background-color: #222;
+  /* padding: 10px; */
+  position: relative;
+}
+a {
+  text-decoration: none;
+}
+.wrap {
+  height: 1950px;
+  /* box-sizing: border-box;
+  position: absolute;
+  width: 1600px;
+  height: 700vh;*/
+  margin: 0 auto; 
+  border-radius: 90px 90px 0 0 ;
+  margin: 20px;
+  background-image: url(../img/main1.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* animation: ani 0.3s linear alternate; */
+}
+@keyframes ani {
+  to {
+    transform: translateY(10px);
+  }
+}
+.inner {
+  padding: 0 150px;
+}
+section {
+  background-color: #fff;
+  border-radius: 90px;
+}
+h1 h2 {
+  letter-spacing: -10px;
+}

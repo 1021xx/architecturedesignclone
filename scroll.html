@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>scroll event</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    section,
+    footer {
+      width: 100%;
+      color: white;
+      font-size: 900px;
+      font-weight: 600;
+    }
+
+    section.on {
+      position: fixed;
+      top: 0;
+    }
+
+    section.on1 {
+      position: relative;
+      z-index: 2;
+    }
+
+    section:first-child {
+      background-color: red;
+    }
+
+    section:nth-child(2) {
+      background-color: orange;
+      text-align: end;
+      border-radius: 70px;
+
+    }
+
+    section:nth-child(3) {
+      background-color: yellow;
+      border-radius: 70px;
+
+    }
+
+    section:nth-child(4) {
+      background-color: green;
+      text-align: end;
+      border-radius: 70px;
+
+    }
+
+    footer {
+      background-color: blue;
+      height: 1000px;
+      position: fixed;
+      bottom: 0;
+      z-index: -1;
+    }
+  </style>
+</head>
+
+<body>
+  <section>1</section>
+  <section>2</section>
+  <section>3</section>
+  <section>4</section>
+  <footer>5</footer>
+
+  <script>
+    $(function () {
+      let ht = $(window).height();
+      $("section").height(ht);
+      let sec_ht = $("section").height();
+      $(window).resize(function () {
+        let ht = $(window).height();
+        $("section").height(ht);
+      });
+      $(window).scroll(function () {
+        let t = $(this).scrollTop();
+        if (t < ht) {
+          $("section").removeClass();
+        } else if (t >= ht && t < ht * 2) {
+          $("section").eq(1).addClass("on");
+          $("section").eq(2).addClass("on1").css("top", ht);
+          $("section").eq(3).addClass("on1").css("top", ht);
+        } else if (t >= ht * 2 && t < ht * 3) {
+          $("section").eq(1).removeClass("on");
+          $("section").eq(2).removeClass("on1").addClass("on").css("top", 0);
+          $("section").eq(3).addClass("on1").css("top", ht);
+        } else if (t >= ht * 3) {
+          $("section").eq(1).removeClass();
+          $("section").eq(2).removeClass();
+          $("section").eq(3).removeClass();
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
